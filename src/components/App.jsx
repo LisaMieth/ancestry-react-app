@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
+import Map from './Map.jsx'
 
 class App extends Component {
-  render() {
-    return <h1>Ancestry React app</h1>
+  render () {
+    return (
+      <div style={{ width: '100%', height: '100%', position: 'absolute' }}>
+        <Map />
+      </div>
+    )
   }
 }
 

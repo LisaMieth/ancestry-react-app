@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   entry: path.resolve(__dirname, './index.js'),
@@ -25,7 +26,10 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js',
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new Dotenv(),
+  ],
   devServer: {
     contentBase: path.resolve(__dirname, './dist'),
     hot: true,
