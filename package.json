@@ -12,13 +12,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@react-google-maps/api": "^2.1.1",
+    "@reduxjs/toolkit": "^1.5.0",
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
+    "google-map-react": "^2.1.9",
+    "prop-types": "^15.7.2",
     "react": "^16.0.1",
     "react-dom": "^16.0.1",
-    "react-google-maps": "^9.4.5"
+    "react-redux": "^7.2.3",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.13.10",
     "@babel/preset-react": "^7.12.13",
     "babel-cli": "^6.18.0",
     "babel-eslint": "^10.1.0",
