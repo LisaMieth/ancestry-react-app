@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import PropTypes, { string } from 'prop-types'
 
 const style = {
   // cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
@@ -8,19 +8,23 @@ const style = {
   // }
 }
 
-const Marker = ({ onClick }) => (
-  <div className='marker'
+const Marker = ({ text, onClick, color }) => (
+  <div className='marker' style={{ backgroundColor: color }}
+    alt={text}
     onClick={onClick}
   />
 )
 
 Marker.defaultProps = {
+  text: null,
   onClick: null,
+  color: null,
 }
 
 Marker.propTypes = {
+  text: string,
   onClick: PropTypes.func,
-  text: PropTypes.string,
+  color: string,
 }
 
 export default Marker

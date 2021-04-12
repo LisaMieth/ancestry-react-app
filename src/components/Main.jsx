@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchAll } from '../app/allSlice'
+import { fetchAll, selectLastNameMap } from '../app/allSlice'
 import Marker from './Marker.jsx'
 import GoogleMap from './GoogleMap.jsx'
 
@@ -13,6 +13,7 @@ const center = {
 const Main = () => {
   const dispatch = useDispatch()
   const data = useSelector(state => state.all.data.filter(elem => !!elem.latitude))
+  const colorMap = useSelector(selectLastNameMap)
   const status = useSelector(state => state.all.status)
   const error = useSelector(state => state.all.error)
 
@@ -24,12 +25,9 @@ const Main = () => {
   }, [status, dispatch])
 
   if (status === 'loading') {
-    console.log('LOADING');
     return (<div className='loader'>Loading...</div>)
   }
   if (status === 'succeeded') {
-    console.log('SUCCESS');
-
     return (
       <GoogleMap
         defaultZoom={10}
@@ -39,6 +37,7 @@ const Main = () => {
       >
         {data.map((elem) => (
           <Marker
+            color={colorMap[elem.last_name_normed].color}
             key={elem.id}
             lat={elem.latitude}
             lng={elem.longitude}
