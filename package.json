@@ -14,13 +14,16 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.0",
     "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
     "chroma-js": "^2.1.1",
     "distinct-colors": "^3.0.0",
     "dotenv": "^8.2.0",
     "google-map-react": "^2.1.9",
     "prop-types": "^15.7.2",
     "react": "^16.0.1",
+    "react-bootstrap": "^1.5.2",
     "react-dom": "^16.0.1",
+    "react-icons": "^4.2.0",
     "react-redux": "^7.2.3",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"

@@ -35,21 +35,25 @@ export default allSlice.reducer
 
 /* eslint-disable camelcase */
 export const selectLastNameMap = (state) => {
-  if (state.all.status !== 'succeeded') return
+  if (state.all.status !== 'succeeded') return null
 
   const { data } = state.all
   const unique = data.reduce((acc, { last_name, last_name_normed }) => {
-    if (!acc.last_name_normed) {
+    if (!acc[last_name_normed]) {
       acc[last_name_normed] = {
-        variations: [last_name],
+        variations: [],
       }
-    } else if (acc[last_name_normed].variations.indexOf(last_name) !== -1) {
+    }
+
+    if (last_name_normed !== last_name && !acc[last_name_normed].variations.includes(last_name)) {
       acc[last_name_normed].variations.push(last_name)
     }
     return acc
   }, {})
 
-  const palette = distinctColors({ count: Object.keys(unique).length }).map(elem => chroma(elem).hex())
+  const palette = distinctColors(
+    { count: Object.keys(unique).length, samples: 800 },
+  ).map(elem => chroma(elem).hex())
 
   const result = Object.keys(unique).reduce((acc, key, i) => {
     const value = unique[key]
@@ -59,6 +63,6 @@ export const selectLastNameMap = (state) => {
     }
     return acc
   }, {})
-  console.log('RESULT', result);
+
   return result
 }

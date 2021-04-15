@@ -4,13 +4,45 @@ body {
   margin:0%;
 }
 
+.main {
+  display: flex;
+}
+
 .mapWrapper {
   height: 100vh;
-  width: 100%;
+  width: 85%;
+}
+
+.legendWrapper {
+  width: 15%;
+  max-height: 100vh;
+  margin-bottom: 10px;
+  background-color: #e9ecef;
+  overflow:scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.legendMarker {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #fff;
+  border-radius: 100%;
+}
+
+.accordionTop {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.drowpdownArrow {
+  align-self: center;
+  margin-left: auto;
 }
 
 .marker {
   position: absolute;
+  margin-right: 10px;
   top: 50%;
   left: 50%;
   width: 18px;

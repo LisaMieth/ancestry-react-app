@@ -4,10 +4,8 @@ import { Provider } from 'react-redux'
 import './style.css'
 import App from './src/components/App.jsx'
 import store from './src/app/store'
-// import { initialState } from './src/reducers'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-// const store = configureAppStore(initialState)
-console.log('STORE', store.getState());
 ReactDOM.render(
   <Provider store={store}>
     <App />

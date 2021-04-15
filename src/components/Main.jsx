@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { fetchAll, selectLastNameMap } from '../app/allSlice'
 import Marker from './Marker.jsx'
 import GoogleMap from './GoogleMap.jsx'
+import Legend from './Legend.jsx'
 
 // Munich as center - TODO: calculate this maybe?
 const center = {
@@ -29,21 +30,24 @@ const Main = () => {
   }
   if (status === 'succeeded') {
     return (
-      <GoogleMap
-        defaultZoom={10}
-        defaultCenter={center}
-        yesIWantToUseGoogleMapApiInternals
-        // onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps, places)}
-      >
-        {data.map((elem) => (
-          <Marker
-            color={colorMap[elem.last_name_normed].color}
-            key={elem.id}
-            lat={elem.latitude}
-            lng={elem.longitude}
-          />
-        ))}
-      </GoogleMap>
+      <div className='main'>
+        <GoogleMap
+          defaultZoom={10}
+          defaultCenter={center}
+          yesIWantToUseGoogleMapApiInternals
+          // onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps, places)}
+        >
+          {data.map((elem) => (
+            <Marker
+              color={colorMap[elem.last_name_normed].color}
+              key={elem.id}
+              lat={elem.latitude}
+              lng={elem.longitude}
+            />
+          ))}
+        </GoogleMap>
+        <Legend />
+      </div>
     )
   }
   if (status === 'failed') {
