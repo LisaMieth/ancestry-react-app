@@ -39,6 +39,7 @@ export const selectLastNameMap = (state) => {
 
   const { data } = state.all
   const unique = data.reduce((acc, { last_name, last_name_normed }) => {
+    if (last_name_normed === null) return acc
     if (!acc[last_name_normed]) {
       acc[last_name_normed] = {
         variations: [],
