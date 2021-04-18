@@ -13,6 +13,11 @@ body {
   width: 85%;
 }
 
+.loadingSpinner {
+  margin-top: 50vh;
+  margin-left: 50vw;
+}
+
 .legendWrapper {
   width: 15%;
   max-height: 100vh;
@@ -25,6 +30,7 @@ body {
 .legendMarker {
   width: 18px;
   height: 18px;
+  margin-right: 10px;
   border: 2px solid #fff;
   border-radius: 100%;
 }
@@ -51,8 +57,6 @@ body {
   border-radius: 100%;
   user-select: none;
   transform: translate(-50%, -50%);
-  /* cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
-  &:hover {
-    z-index: 1;
-  } */
+  z-index: -1;
+  cursor: pointer;
 }

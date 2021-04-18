@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import Spinner from 'react-bootstrap/Spinner'
 import { fetchAll, selectLastNameMap } from '../app/allSlice'
 import Marker from './Marker.jsx'
 import GoogleMap from './GoogleMap.jsx'
@@ -13,10 +14,13 @@ const center = {
 
 const Main = () => {
   const dispatch = useDispatch()
+  const [activeItem, setActiveItem] = useState(null)
   const data = useSelector(state => state.all.data.filter(elem => !!elem.latitude))
   const colorMap = useSelector(selectLastNameMap)
   const status = useSelector(state => state.all.status)
   const error = useSelector(state => state.all.error)
+
+  console.log('colormap in main', colorMap);
 
   // Pass an array of things to watch out for and don't rerender if they haven't changed
   useEffect(() => {
@@ -26,7 +30,11 @@ const Main = () => {
   }, [status, dispatch])
 
   if (status === 'loading') {
-    return (<div className='loader'>Loading...</div>)
+    return (
+      <Spinner animation="border" role="status" className='loadingSpinner'>
+        <span className="sr-only">Loading...</span>
+      </Spinner>
+    )
   }
   if (status === 'succeeded') {
     return (
@@ -37,16 +45,22 @@ const Main = () => {
           yesIWantToUseGoogleMapApiInternals
           // onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps, places)}
         >
-          {data.map((elem) => (
-            <Marker
-              color={colorMap[elem.last_name_normed].color}
-              key={elem.id}
-              lat={elem.latitude}
-              lng={elem.longitude}
-            />
-          ))}
+          {data.map((elem) => {
+            const active = elem.last_name_normed === activeItem
+            return (
+              <Marker
+                active={active}
+                color={colorMap[elem.last_name_normed].color}
+                text={elem.last_name_normed}
+                handleActiveItem={setActiveItem}
+                key={elem.id}
+                lat={elem.latitude}
+                lng={elem.longitude}
+              />
+            )
+          })}
         </GoogleMap>
-        <Legend />
+        <Legend handleActiveItem={setActiveItem} activeItem={activeItem} />
       </div>
     )
   }

@@ -1,30 +1,39 @@
 import React from 'react'
-import PropTypes, { string } from 'prop-types'
+import PropTypes, { bool, string } from 'prop-types'
 
-const style = {
-  // cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
-  // &:hover {
-  //   z-index: 1;
-  // }
+const Marker = ({ text, handleActiveItem, color, active }) => {
+  const style = {
+    backgroundColor: color,
+  }
+
+  if (active) {
+    style.border = '4px solid red'
+    style.transform = 'scale(1.5)'
+    style.zIndex = 1
+  }
+
+  return (
+    <div className='marker' style={style}
+      alt={text}
+      onClick={() => {
+        handleActiveItem(text)
+      }}
+    />
+  )
 }
-
-const Marker = ({ text, onClick, color }) => (
-  <div className='marker' style={{ backgroundColor: color }}
-    alt={text}
-    onClick={onClick}
-  />
-)
 
 Marker.defaultProps = {
   text: null,
-  onClick: null,
+  handleActiveItem: null,
   color: null,
+  active: false,
 }
 
 Marker.propTypes = {
   text: string,
-  onClick: PropTypes.func,
+  handleActiveItem: PropTypes.func,
   color: string,
+  active: bool,
 }
 
 export default Marker
