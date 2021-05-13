@@ -20,8 +20,6 @@ const Main = () => {
   const status = useSelector(state => state.all.status)
   const error = useSelector(state => state.all.error)
 
-  console.log('colormap in main', colorMap);
-
   // Pass an array of things to watch out for and don't rerender if they haven't changed
   useEffect(() => {
     if (status === 'idle') {

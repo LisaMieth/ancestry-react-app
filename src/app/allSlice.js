@@ -3,9 +3,14 @@ import distinctColors from 'distinct-colors'
 import chroma from 'chroma-js'
 import client from './apiClient'
 
-export const fetchAll = createAsyncThunk('all/fetchAll', async () => {
-  const response = await client.get('/all')
-  return response.data
+export const fetchAll = createAsyncThunk('all/fetchAll', async (args, { rejectWithValue }) => {
+  try {
+    const response = await client.get('/all-test')
+    return response.data
+  }
+  catch (err) {
+    return rejectWithValue(err.message)
+  }
 })
 
 export const allSlice = createSlice({
@@ -26,7 +31,7 @@ export const allSlice = createSlice({
     },
     [fetchAll.rejected]: (state, action) => {
       state.status = 'failed'
-      state.error = action.error.message
+      state.error = action.payload
     },
   },
 })
