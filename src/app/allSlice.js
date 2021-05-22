@@ -5,10 +5,9 @@ import client from './apiClient'
 
 export const fetchAll = createAsyncThunk('all/fetchAll', async (args, { rejectWithValue }) => {
   try {
-    const response = await client.get('/all-test')
+    const response = await client.get('/all')
     return response.data
-  }
-  catch (err) {
+  } catch (err) {
     return rejectWithValue(err.message)
   }
 })
