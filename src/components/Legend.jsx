@@ -14,7 +14,8 @@ const Legend = ({ handleActiveItem, activeItem }) => {
   }, {})
 
   const executeScroll = (key) => {
-    refs[key].current.scrollIntoView()
+    const ref = refs[key]
+    if (ref.current) ref.current.scrollIntoView()
   }
 
   return (

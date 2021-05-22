@@ -34,6 +34,7 @@ const Main = () => {
       </Spinner>
     )
   }
+
   if (status === 'succeeded') {
     return (
       <div className='main'>
