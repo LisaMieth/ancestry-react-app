@@ -5,7 +5,7 @@ import client from './apiClient'
 
 export const fetchAll = createAsyncThunk('all/fetchAll', async (args, { rejectWithValue }) => {
   try {
-    const response = await client.get('/all')
+    const response = await client.get('/grouped')
     return response.data
   } catch (err) {
     return rejectWithValue(err.message)

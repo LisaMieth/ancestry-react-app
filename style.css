@@ -60,3 +60,27 @@ body {
   z-index: -1;
   cursor: pointer;
 }
+
+.popoverTitle {
+  display: flex;
+}
+
+.popoverBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titleText {
+  margin-right: 10px;
+}
+
+.titleDates {
+  margin-left: auto;
+} 
+
+.familyItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

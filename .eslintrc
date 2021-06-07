@@ -27,6 +27,7 @@
     "object-curly-newline": 0,
     "prefer-object-spread": 0,
     "no-extra-boolean-cast": 0,
+    "no-restricted-syntax": ["error", "ForInStatement", "LabeledStatement", "WithStatement"],
     "jest/no-disabled-tests": "warn",
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",

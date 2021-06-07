@@ -19,6 +19,6 @@ describe('Main', () => {
   test('displays expected number of markers', async () => {
     const { container } = render(<Main />)
     await (waitFor(() => expect(apiClient.get).toHaveBeenCalledTimes(1)))
-    expect(container.getElementsByClassName('marker')).toHaveLength(2)
+    expect(container.getElementsByClassName('marker')).toHaveLength(1)
   })
 })

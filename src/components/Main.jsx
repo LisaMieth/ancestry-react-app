@@ -48,11 +48,11 @@ const Main = () => {
             const active = elem.last_name_normed === activeItem
             return (
               <Marker
+                key={`${elem.last_name_normed}${elem.place}`}
                 active={active}
                 color={colorMap[elem.last_name_normed].color}
-                text={elem.last_name_normed}
+                family={elem}
                 handleActiveItem={setActiveItem}
-                key={elem.id}
                 lat={elem.latitude}
                 lng={elem.longitude}
               />
