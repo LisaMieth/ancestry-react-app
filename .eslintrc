@@ -8,7 +8,7 @@
     "plugin:react/recommended",
     "plugin:jest/recommended"
   ],
-  "parser": "babel-eslint",
+  // "parser": "babel-eslint",
   "plugins": ["jest", "jest-dom"],
   "rules": {
     "no-underscore-dangle": 0,

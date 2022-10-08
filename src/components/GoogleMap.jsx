@@ -6,7 +6,8 @@ const GoogleMap = ({ children, ...props }) => (
   <div className='mapWrapper'>
     <GoogleMapReact
       bootstrapURLKeys={{
-        key: process.env.GOOGLE_MAPS_API_KEY,
+        // TODO: Remove this.
+        key: process.env.VITE_GOOGLE_MAPS_API_KEY,
       }}
       {...props}
     >

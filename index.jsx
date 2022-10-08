@@ -12,5 +12,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('app'),
 )
-
-module.hot.accept()
