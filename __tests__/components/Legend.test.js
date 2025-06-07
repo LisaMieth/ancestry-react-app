@@ -4,6 +4,12 @@ import { waitFor } from '@testing-library/dom'
 import { render, fireEvent } from '../../test-utils.jsx'
 import Legend from '../../src/components/Legend.jsx'
 
+// Sample data & mock for tests to run.
+const sampleData = [{ id: 1, first_name: 'Maria', last_name: 'Mayer' }]
+
+jest.mock('../../src/api/apiClient', () => ({ getDuckDb: jest.fn().mockResolvedValue({}) }))
+jest.mock('../../src/api/queries', () => ({ selectAll: jest.fn().mockResolvedValue(sampleData) }))
+
 const useSelectorMock = jest.spyOn(reactRedux, 'useSelector')
 const useRefMock = jest.spyOn(React, 'useRef')
 

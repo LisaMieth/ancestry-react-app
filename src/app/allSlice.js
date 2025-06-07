@@ -1,12 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import distinctColors from 'distinct-colors'
 import chroma from 'chroma-js'
-import client from './apiClient'
+import { selectAll } from '../api/queries'
 
 export const fetchAll = createAsyncThunk('all/fetchAll', async (args, { rejectWithValue }) => {
   try {
-    const response = await client.get('/grouped')
-    return response.data
+    const data = await selectAll()
+
+    return data
   } catch (err) {
     return rejectWithValue(err.message)
   }

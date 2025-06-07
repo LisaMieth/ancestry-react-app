@@ -42,7 +42,7 @@ const Legend = ({ handleActiveItem, activeItem }) => {
               {!!variations.length
               && <Accordion.Collapse eventKey={key}>
                 <Card.Body>
-                  {variations.map(elem => <li key={key}>{elem}</li>)}
+                  {variations.map(elem => <li key={`${key}-${elem}`}>{elem}</li>)}
                 </Card.Body>
               </Accordion.Collapse>
               }
